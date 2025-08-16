@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="دانلود بهترین بازی‌های موبایلی پرطرفدار با لینک مستقیم از GameBad - بتل رویال، اکشن، پازل و بیشتر">
+    <meta name="keywords" content="دانلود بازی موبایل, بازی آنلاین, بازی آفلاین, پابجی, فری فایر, کندی کراش, گیمری">
+    <title>GameBad - دانلود بازی‌های موبایلی پرطرفدار</title>
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: linear-gradient(135deg, #121212 0%, #1e3a8a 100%);
+            --card-bg: rgba(30, 30, 30, 0.95);
+            --text-color: #e0e0e0;
+            --input-bg: #252525;
+            --accent-color: #3b82f6;
+            --success-color: #22c55e;
+            --hover-color: #60a5fa;
+        }
+
+        [data-theme="light"] {
+            --bg-color: linear-gradient(135deg, #e5e7eb 0%, #93c5fd 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #1f2937;
+            --input-bg: #d1d5db;
+            --accent-color: #1e40af;
+            --success-color: #15803d;
+            --hover-color: #3b82f6;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            text-align: right;
+            min-height: 100vh;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(30, 64, 175, 0.9), rgba(13, 110, 253, 0.7));
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 48px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+            animation: neonGlow 2s ease-in-out infinite;
+        }
+
+        #search {
+            width: 100%;
+            max-width: 700px;
+            padding: 15px;
+            margin: 15px auto;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            display: block;
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+
+        #search:focus {
+            box-shadow: 0 0 12px var(--accent-color);
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        #search::placeholder {
+            color: #9ca3af;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-btn {
+            background-color: var(--success-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.05);
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .sort-options {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .sort-options select {
+            padding: 10px;
+            border-radius: 8px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            border: none;
+            font-size: 14px;
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            font-size: 28px;
+            text-align: center;
+            margin: 30px 0 20px;
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.5s ease-in-out forwards;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .game-logo {
+            width: 120px;
+            height: 120px;
+            display: block;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            object-fit: contain;
+            border: 2px solid var(--accent-color);
+        }
+
+        .game-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .game-card p {
+            margin: 6px 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            background-color: var(--success-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .download-btn:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.05);
+        }
+
+        .game-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            margin-top: 12px;
+            padding-bottom: 5px;
+        }
+
+        .gallery-img {
+            width: 160px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+        }
+
+        .rating {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .rating select {
+            padding: 6px;
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            border: none;
+            margin-right: 5px;
+        }
+
+        .rating button {
+            background-color: var(--success-color);
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .rating button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .pagination {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .pagination button {
+            background-color: var(--success-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            margin: 0 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .pagination button:disabled {
+            background-color: #4b5563;
+            cursor: not-allowed;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background-color: var(--hover-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .back-to-top,
+        .theme-toggle,
+        .language-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.2s;
+            z-index: 1000;
+            /* Ensure buttons stay on top */
+        }
+
+        .back-to-top:hover,
+        .theme-toggle:hover,
+        .language-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle {
+            bottom: 80px;
+        }
+
+        .language-toggle {
+            bottom: 140px;
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .hamburger-btn {
+            background-color: var(--accent-color);
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.open span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(30, 64, 175, 0.95), rgba(13, 110, 253, 0.85));
+            padding: 20px;
+            transition: left 0.3s ease;
+            z-index: 999;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-menu.open {
+            left: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 25px 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #facc15;
+        }
+
+        .page-section {
+            display: none;
+            padding: 25px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-section h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .page-section p,
+        .page-section textarea {
+            font-size: 16px;
+        }
+
+        .page-section textarea {
+            width: 100%;
+            max-width: 700px;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        .page-section button {
+            background-color: var(--success-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .page-section button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .news-item {
+            background-color: var(--input-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes neonGlow {
+            0% {
+                text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
+            }
+
+            50% {
+                text-shadow: 0 0 15px var(--accent-color), 0 0 20px var(--accent-color);
+            }
+
+            100% {
+                text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
+            }
+        }
+
+        .game-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .game-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .game-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .game-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .game-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .game-card,
+            .logo,
+            .hamburger-btn span,
+            .download-btn {
+                animation: none;
+                transition: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-card {
+                padding: 15px;
+            }
+
+            .game-card h3 {
+                font-size: 18px;
+            }
+
+            .game-card p {
+                font-size: 13px;
+            }
+
+            .download-btn {
+                font-size: 13px;
+                padding: 8px 15px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .game-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .nav-menu {
+                width: 100%;
+            }
+
+            .gallery-img {
+                width: 130px;
+                height: 80px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 900px) {
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <header>
+        <h1 class="logo">GameBad</h1>
+        <p>دانلود بهترین بازی‌های موبایلی - توسط امیرحسین</p>
+    </header>
+
+    <div class="hamburger-menu">
+        <button class="hamburger-btn" aria-label="باز کردن منو">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#" data-page="home">خانه</a></li>
+                <li><a href="#" data-page="new-games">بازی‌های جدید</a></li>
+                <li><a href="#" data-page="support">پشتیبانی</a></li>
+                <li><a href="#" data-page="news">اخبار گیم</a></li>
+                <li><a href="#" data-page="about">درباره من</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <button class="theme-toggle" aria-label="تغییر تم">🌙/☀️</button>
+    <button class="language-toggle" aria-label="تغییر زبان">FA | EN</button>
+    <button class="back-to-top" aria-label="بازگشت به بالا">↑</button>
+
+    <div class="main-content" id="home" data-page="home">
+        <input type="text" id="search" placeholder="جستجوی بازی (مثل پابجی یا کندی)..."
+            aria-label="جستجوی بازی‌های موبایلی">
+
+        <div class="sort-options">
+            <label for="sort">مرتب‌سازی: </label>
+            <select id="sort" aria-label="مرتب‌سازی بازی‌ها">
+                <option value="name">نام</option>
+                <option value="score">امتیاز</option>
+                <option value="size">حجم</option>
+                <option value="views">بازدید</option>
+            </select>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all" aria-label="نمایش همه بازی‌ها">همه</button>
+            <button class="filter-btn" data-filter="آنلاین" aria-label="نمایش بازی‌های آنلاین">آنلاین</button>
+            <button class="filter-btn" data-filter="آفلاین" aria-label="نمایش بازی‌های آفلاین">آفلاین</button>
+            <button class="filter-btn" data-genre="بتل رویال" aria-label="نمایش بازی‌های بتل رویال">بتل رویال</button>
+            <button class="filter-btn" data-genre="اکشن" aria-label="نمایش بازی‌های اکشن">اکشن</button>
+            <button class="filter-btn" data-genre="پازل" aria-label="نمایش بازی‌های پازل">پازل</button>
+            <button class="filter-btn" data-genre="دویدن بی‌پایان" aria-label="نمایش بازی‌های دویدن بی‌پایان">دویدن
+                بی‌پایان</button>
+            <button class="filter-btn" data-genre="پلتفرم UGC" aria-label="نمایش بازی‌های پلتفرم UGC">پلتفرم
+                UGC</button>
+            <button class="filter-btn" data-genre="MOBA" aria-label="نمایش بازی‌های MOBA">MOBA</button>
+            <button class="filter-btn" data-genre="شوتر تاکتیکی" aria-label="نمایش بازی‌های شوتر تاکتیکی">شوتر
+                تاکتیکی</button>
+            <button class="filter-btn" data-genre="استراتژی" aria-label="نمایش بازی‌های استراتژی">استراتژی</button>
+            <button class="filter-btn" data-genre="ورزشی" aria-label="نمایش بازی‌های ورزشی">ورزشی</button>
+            <button class="filter-btn" data-genre="شبیه‌سازی" aria-label="نمایش بازی‌های شبیه‌سازی">شبیه‌سازی</button>
+        </div>
+
+        <section id="all-games">
+            <h2 class="section-title">همه بازی‌ها</h2>
+            <div class="games-grid" id="search-grid"></div>
+            <div class="pagination">
+                <button id="prev-page" aria-label="صفحه قبلی">قبلی</button>
+                <span id="page-info"></span>
+                <button id="next-page" aria-label="صفحه بعدی">بعدی</button>
+            </div>
+        </section>
+    </div>
+
+    <section id="new-games" class="page-section" data-page="new-games">
+        <h2 class="section-title">بازی‌های جدید</h2>
+        <div class="games-grid" id="new-grid"></div>
+    </section>
+
+    <section id="support" class="page-section" data-page="support">
+        <h2>پشتیبانی</h2>
+        <p>نظرات، پیشنهادات یا گزارش خطاها رو اینجا بنویسید:</p>
+        <textarea placeholder="نظرتون چیه؟ خطایی دیدید؟" rows="5"></textarea>
+        <button onclick="alert('نظر شما ثبت شد!')">ارسال</button>
+    </section>
+
+    <section id="news" class="page-section" data-page="news">
+        <h2>اخبار دنیای گیم موبایل</h2>
+        <div class="news-item">
+            <h3>فصل جدید Warzone Mobile</h3>
+            <p>فصل جدید Call of Duty: Warzone Mobile با نقشه Verdansk و حالت‌های جدید در ۲۰۲۵ منتشر شد!</p>
+        </div>
+        <div class="news-item">
+            <h3>همکاری Free Fire با Chainsaw Man</h3>
+            <p>Garena Free Fire با انیمه Chainsaw Man همکاری کرد و اسکین‌های جدید اضافه شد.</p>
+        </div>
+        <div class="news-item">
+            <h3>بازگشت Apex Legends Mobile</h3>
+            <p>EA نسخه بازسازی‌شده Apex Legends Mobile رو با موتور جدید در ۲۰۲۵ منتشر کرد.</p>
+        </div>
+    </section>
+
+    <section id="about" class="page-section" data-page="about">
+        <h2>درباره من</h2>
+        <p>سلام! من امیرحسین هستم، یه گیمر حرفه‌ای که عاشق به اشتراک گذاشتن بهترین بازی‌های موبایلی با شماست. GameBad رو
+            ساختم تا بتونید به‌راحتی بازی‌های مورد علاقه‌تون رو پیدا کنید و از اخبار گیم باخبر بشید. نظرتون رو حتماً
+            بگید!</p>
+    </section>
+
+    <footer>
+        <p>© ۲۰۲۵ GameBad - طراحی و مدیریت: امیرحسین | با عشق برای گیمرها</p>
+    </footer>
+
+    <script>
+        const translations = {
+            fa: {
+                search: "جستجوی بازی (مثل پابجی یا کندی)...",
+                all: "همه",
+                online: "آنلاین",
+                offline: "آفلاین",
+                battleRoyale: "بتل رویال",
+                action: "اکشن",
+                puzzle: "پازل",
+                endlessRun: "دویدن بی‌پایان",
+                ugc: "پلتفرم UGC",
+                moba: "MOBA",
+                tactical: "شوتر تاکتیکی",
+                strategy: "استراتژی",
+                sports: "ورزشی",
+                simulation: "شبیه‌سازی",
+                sortName: "نام",
+                sortScore: "امتیاز",
+                sortSize: "حجم",
+                sortViews: "بازدید"
+            },
+            en: {
+                search: "Search games (e.g., PUBG or Candy)...",
+                all: "All",
+                online: "Online",
+                offline: "Offline",
+                battleRoyale: "Battle Royale",
+                action: "Action",
+                puzzle: "Puzzle",
+                endlessRun: "Endless Run",
+                ugc: "UGC Platform",
+                moba: "MOBA",
+                tactical: "Tactical Shooter",
+                strategy: "Strategy",
+                sports: "Sports",
+                simulation: "Simulation",
+                sortName: "Name",
+                sortScore: "Score",
+                sortSize: "Size",
+                sortViews: "Views"
+            }
+        };
+
+        const games = [
+            { name: "پابجی موبایل", dev: "Tencent", genre: "بتل رویال", online: "آنلاین", size: "۱ گیگابایت", score: "۴.۳/۵", views: 12000, link: "https://play.google.com/store/apps/details?id=com.tencent.ig", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "کندی کراش ساگا", dev: "King", genre: "پازل", online: "آفلاین", size: "۱۰۰ مگابایت", score: "۴.۶/۵", views: 15000, link: "https://play.google.com/store/apps/details?id=com.king.candycrushsaga", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "فری فایر", dev: "Garena", genre: "بتل رویال", online: "آنلاین", size: "۷۰۰ مگابایت", score: "۴.۲/۵", views: 11000, link: "https://play.google.com/store/apps/details?id=com.dts.freefireth", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "رابلاکس", dev: "Roblox Corporation", genre: "پلتفرم UGC", online: "آنلاین", size: "۱۵۰ مگابایت", score: "۴.۴/۵", views: 9000, link: "https://play.google.com/store/apps/details?id=com.roblox.client", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "سابوی سرفرز", dev: "SYBO", genre: "دویدن بی‌پایان", online: "آفلاین", size: "۱۵۰ مگابایت", score: "۴.۵/۵", views: 10000, link: "https://play.google.com/store/apps/details?id=com.kiloo.subwaysurf", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "فورتنایت موبایل", dev: "Epic Games", genre: "بتل رویال", online: "آنلاین", size: "۲ گیگابایت", score: "۴.۵/۵", views: 13000, link: "https://www.epicgames.com/fortnite/en-US/mobile", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Call of Duty: Mobile", dev: "Activision", genre: "بتل رویال", online: "آنلاین", size: "۲.۵ گیگابایت", score: "۴.۴/۵", views: 14000, link: "https://play.google.com/store/apps/details?id=com.activision.callofduty.shooter", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Brawl Stars", dev: "Supercell", genre: "بتل رویال", online: "آنلاین", size: "۳۵۰ مگابایت", score: "۴.۳/۵", views: 9500, link: "https://play.google.com/store/apps/details?id=com.supercell.brawlstars", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Clash Royale", dev: "Supercell", genre: "MOBA", online: "آنلاین", size: "۱۵۰ مگابایت", score: "۴.۴/۵", views: 10000, link: "https://play.google.com/store/apps/details?id=com.supercell.clashroyale", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Among Us", dev: "Innersloth", genre: "اکشن", online: "آنلاین", size: "۱۰۰ مگابایت", score: "۴.۴/۵", views: 11000, link: "https://play.google.com/store/apps/details?id=com.innersloth.spacemafia", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Genshin Impact", dev: "miHoYo", genre: "اکشن", online: "آنلاین", size: "۳ گیگابایت", score: "۴.۵/۵", views: 13000, link: "https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Asphalt 9: Legends", dev: "Gameloft", genre: "اکشن", online: "آنلاین", size: "۲ گیگابایت", score: "۴.۴/۵", views: 10000, link: "https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA9HM", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Temple Run 2", dev: "Imangi Studios", genre: "دویدن بی‌پایان", online: "آفلاین", size: "۱۲۰ مگابایت", score: "۴.۳/۵", views: 8500, link: "https://play.google.com/store/apps/details?id=com.imangi.templerun2", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Clash of Clans", dev: "Supercell", genre: "استراتژی", online: "آنلاین", size: "۲۰۰ مگابایت", score: "۴.۵/۵", views: 12000, link: "https://play.google.com/store/apps/details?id=com.supercell.clashofclans", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Hay Day", dev: "Supercell", genre: "شبیه‌سازی", online: "آنلاین", size: "۱۵۰ مگابایت", score: "۴.۴/۵", views: 9000, link: "https://play.google.com/store/apps/details?id=com.supercell.hayday", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Angry Birds 2", dev: "Rovio", genre: "پازل", online: "آفلاین", size: "۲۰۰ مگابایت", score: "۴.۳/۵", views: 8700, link: "https://play.google.com/store/apps/details?id=com.rovio.baba", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Subway Princess Runner", dev: "Ivy", genre: "دویدن بی‌پایان", online: "آفلاین", size: "۱۰۰ مگابایت", score: "۴.۲/۵", views: 6500, link: "https://play.google.com/store/apps/details?id=com.rioo.runnersubway", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Hill Climb Racing", dev: "Fingersoft", genre: "اکشن", online: "آفلاین", size: "۸۰ مگابایت", score: "۴.۴/۵", views: 8000, link: "https://play.google.com/store/apps/details?id=com.fingersoft.hillclimb", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Shadow Fight 2", dev: "Nekki", genre: "اکشن", online: "آفلاین", size: "۱۵۰ مگابایت", score: "۴.۴/۵", views: 8500, link: "https://play.google.com/store/apps/details?id=com.nekki.shadowfight", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] },
+            { name: "Plants vs. Zombies", dev: "EA", genre: "استراتژی", online: "آفلاین", size: "۱۰۰ مگابایت", score: "۴.۴/۵", views: 9000, link: "https://play.google.com/store/apps/details?id=com.ea.game.pvzfree_row", logo: "default-logo.png", screenshots: ["screenshot1.jpg", "screenshot2.jpg"] }
+        ];
+
+        function renderGames(container, gameList, page = 1) {
+            try {
+                if (!container) {
+                    console.error('Container not found');
+                    return;
+                }
+                container.innerHTML = '';
+                const start = (page - 1) * gamesPerPage;
+                const end = start + gamesPerPage;
+                const paginatedGames = gameList.slice(start, end);
+                paginatedGames.forEach((game, index) => {
+                    if (!game || !game.name) {
+                        console.error('Invalid game data at index', index, game);
+                        return;
+                    }
+                    const card = document.createElement('div');
+                    card.className = 'game-card';
+                    card.innerHTML = `
+                        <img src="${game.logo || 'default-logo.png'}" alt="${game.name}" class="game-logo" loading="lazy" onerror="this.src='default-logo.png'">
+                        <h3>${game.name}</h3>
+                        <p>توسعه‌دهنده: ${game.dev}</p>
+                        <p>ژانر: ${game.genre}</p>
+                        <p>وضعیت: ${game.online}</p>
+                        <p>حجم تقریبی: ${game.size}</p>
+                        <p>امتیاز: ${game.score}</p>
+                        <p>بازدید: ${game.views}</p>
+                        <a href="${game.link}" class="download-btn" target="_blank" aria-label="دانلود بازی ${game.name}">دانلود</a>
+                        <div class="game-gallery">
+                            ${(game.screenshots || []).map(src => `<img src="${src}" alt="اسکرین‌شات بازی ${game.name}" class="gallery-img" loading="lazy" onerror="this.style.display='none'">`).join('')}
+                        </div>
+                        <div class="rating">
+                            <span>امتیاز شما: </span>
+                            <select aria-label="امتیازدهی به بازی ${game.name}">
+                                <option value="1">۱ ستاره</option>
+                                <option value="2">۲ ستاره</option>
+                                <option value="3">۳ ستاره</option>
+                                <option value="4">۴ ستاره</option>
+                                <option value="5">۵ ستاره</option>
+                            </select>
+                            <button onclick="alert('امتیاز ثبت شد!')">ارسال</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+                const pageInfo = document.getElementById('page-info');
+                if (pageInfo) {
+                    pageInfo.textContent = `صفحه ${page} از ${Math.ceil(gameList.length / gamesPerPage)}`;
+                }
+                const prevBtn = document.getElementById('prev-page');
+                const nextBtn = document.getElementById('next-page');
+                if (prevBtn) prevBtn.disabled = page === 1;
+                if (nextBtn) nextBtn.disabled = end >= gameList.length;
+            } catch (error) {
+                console.error('Error rendering games:', error.message, error.stack);
+            }
+        }
+
+        // نمایش اولیه
+        try {
+            const newGrid = document.getElementById('new-grid');
+            const searchGrid = document.getElementById('search-grid');
+            if (searchGrid) {
+                renderGames(searchGrid, games, 1); // Display all games initially
+            } else {
+                console.error('search-grid element not found');
+            }
+            if (newGrid) {
+                const newGames = games.filter(game => parseFloat(game.score) >= 4.4);
+                renderGames(newGrid, newGames);
+            } else {
+                console.error('new-grid element not found');
+            }
+        } catch (error) {
+            console.error('Error initializing games:', error.message, error.stack);
+        }
+
+        // جستجو و فیلتر
+        const searchInput = document.getElementById('search');
+        const allGamesSection = document.getElementById('all-games');
+        const searchGrid = document.getElementById('search-grid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const sortSelect = document.getElementById('sort');
+        let currentFilter = 'all';
+        let currentGenre = '';
+        let currentPage = 1;
+        const gamesPerPage = 8;
+
+        function updateResults() {
+            try {
+                console.log('updateResults called with:', { currentFilter, currentGenre, currentPage, query: searchInput.value });
+                if (!searchGrid || !allGamesSection) {
+                    console.error('Required sections not found:', { searchGrid, allGamesSection });
+                    return;
+                }
+                let filtered = [...games];
+                const query = searchInput.value.trim();
+                console.log('Filtering games, initial count:', filtered.length);
+
+                // Apply online/offline filter
+                if (currentFilter !== 'all') {
+                    filtered = filtered.filter(game => game.online === currentFilter);
+                    console.log('After online/offline filter:', filtered.length, 'games');
+                }
+
+                // Apply genre filter
+                if (currentGenre) {
+                    filtered = filtered.filter(game => game.genre === currentGenre);
+                    console.log('After genre filter:', filtered.length, 'games');
+                }
+
+                // Apply search query
+                if (query) {
+                    filtered = filtered.filter(game => game.name.toLowerCase().includes(query.toLowerCase()));
+                    console.log('After search query:', filtered.length, 'games');
+                }
+
+                // Apply sorting
+                const sortBy = sortSelect.value;
+                if (sortBy === 'score') {
+                    filtered.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+                } else if (sortBy === 'size') {
+                    filtered.sort((a, b) => parseSize(a.size) - parseSize(b.size));
+                } else if (sortBy === 'views') {
+                    filtered.sort((a, b) => b.views - a.views);
+                } else {
+                    filtered.sort((a, b) => a.name.localeCompare(b.name, 'fa'));
+                }
+                console.log('After sorting:', filtered.map(g => g.name));
+
+                // Always show all-games section
+                allGamesSection.style.display = 'block';
+                renderGames(searchGrid, filtered, currentPage);
+            } catch (error) {
+                console.error('Error updating results:', error.message, error.stack);
+            }
+        }
+
+        function parseSize(size) {
+            try {
+                const value = parseFloat(size);
+                return size.includes('گیگابایت') ? value * 1000 : value;
+            } catch (error) {
+                console.error('Error parsing size:', error.message);
+                return 0;
+            }
+        }
+
+        let timeout;
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                clearTimeout(timeout);
+                timeout = setTimeout(updateResults, 300);
+            });
+        } else {
+            console.error('search input not found');
+        }
+
+        if (sortSelect) {
+            sortSelect.addEventListener('change', () => {
+                currentPage = 1;
+                updateResults();
+            });
+        }
+
+        if (filterBtns) {
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    if (e.target.dataset.filter) {
+                        currentFilter = e.target.dataset.filter;
+                        currentGenre = ''; // Reset genre when selecting online/offline filter
+                        console.log('Filter set to:', currentFilter, 'Genre reset to:', currentGenre);
+                    } else if (e.target.dataset.genre) {
+                        currentGenre = e.target.dataset.genre;
+                        currentFilter = 'all'; // Reset filter when selecting genre
+                        console.log('Genre set to:', currentGenre, 'Filter reset to:', currentFilter);
+                    }
+                    currentPage = 1;
+                    updateResults();
+                });
+            });
+        }
+
+        // صفحه‌بندی
+        const prevPageBtn = document.getElementById('prev-page');
+        const nextPageBtn = document.getElementById('next-page');
+        if (prevPageBtn) {
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateResults();
+                }
+            });
+        }
+        if (nextPageBtn) {
+            nextPageBtn.addEventListener('click', () => {
+                if (currentPage < Math.ceil(games.length / gamesPerPage)) {
+                    currentPage++;
+                    updateResults();
+                }
+            });
+        }
+
+        // دکمه بازگشت به بالا
+        const backToTopBtn = document.querySelector('.back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                backToTopBtn.classList.toggle('show', window.scrollY > 300);
+            });
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // مدیریت منوی همبرگری
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        const pages = document.querySelectorAll('.main-content, .page-section');
+
+        if (hamburgerBtn && navMenu) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('open');
+                navMenu.classList.toggle('open');
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.dataset.page;
+                pages.forEach(page => {
+                    page.classList.toggle('active', page.id === pageId);
+                });
+                hamburgerBtn.classList.remove('open');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // تغییر تم
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', document.body.dataset.theme);
+            });
+            document.body.dataset.theme = localStorage.getItem('theme') || 'dark';
+        }
+
+        // تغییر زبان
+        const languageToggle = document.querySelector('.language-toggle');
+        let currentLang = 'fa';
+        function setLanguage(lang) {
+            try {
+                currentLang = lang;
+                if (searchInput) searchInput.placeholder = translations[lang].search;
+                document.querySelector('[data-filter="all"]').textContent = translations[lang].all;
+                document.querySelector('[data-filter="آنلاین"]').textContent = translations[lang].online;
+                document.querySelector('[data-filter="آفلاین"]').textContent = translations[lang].offline;
+                document.querySelector('[data-genre="بتل رویال"]').textContent = translations[lang].battleRoyale;
+                document.querySelector('[data-genre="اکشن"]').textContent = translations[lang].action;
+                document.querySelector('[data-genre="پازل"]').textContent = translations[lang].puzzle;
+                document.querySelector('[data-genre="دویدن بی‌پایان"]').textContent = translations[lang].endlessRun;
+                document.querySelector('[data-genre="پلتفرم UGC"]').textContent = translations[lang].ugc;
+                document.querySelector('[data-genre="MOBA"]').textContent = translations[lang].moba;
+                document.querySelector('[data-genre="شوتر تاکتیکی"]').textContent = translations[lang].tactical;
+                document.querySelector('[data-genre="استراتژی"]').textContent = translations[lang].strategy;
+                document.querySelector('[data-genre="ورزشی"]').textContent = translations[lang].sports;
+                document.querySelector('[data-genre="شبیه‌سازی"]').textContent = translations[lang].simulation;
+                document.querySelector('#sort option[value="name"]').textContent = translations[lang].sortName;
+                document.querySelector('#sort option[value="score"]').textContent = translations[lang].sortScore;
+                document.querySelector('#sort option[value="size"]').textContent = translations[lang].sortSize;
+                document.querySelector('#sort option[value="views"]').textContent = translations[lang].sortViews;
+                localStorage.setItem('language', lang);
+                updateResults();
+            } catch (error) {
+                console.error('Error setting language:', error.message, error.stack);
+            }
+        }
+        if (languageToggle) {
+            languageToggle.addEventListener('click', () => {
+                setLanguage(currentLang === 'fa' ? 'en' : 'fa');
+            });
+            setLanguage(localStorage.getItem('language') || 'fa');
+        }
+
+        // اطلاعیه‌های پویا
+        if ('Notification' in window) {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    setTimeout(() => {
+                        try {
+                            new Notification('GameBad', {
+                                body: 'فصل جدید Warzone Mobile منتشر شد!',
+                                icon: 'default-logo.png'
+                            });
+                        } catch (error) {
+                            console.error('Error showing notification:', error.message);
+                        }
+                    }, 2000);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
